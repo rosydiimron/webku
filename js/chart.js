@@ -41,7 +41,7 @@
 				responsive: true,
 				title: {
 					display: true,
-					text: 'GRAFIK PENDAFTAR DAN WISUDAWAN UNIVERSITAS NAROTAMA'
+					text: ''
 				},
 				tooltips: {
 					mode: 'index',
