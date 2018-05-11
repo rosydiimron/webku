@@ -303,7 +303,7 @@
 
     
 
-       <!--==========================
+  <!--==========================
     Chart
   ============================-->
 
@@ -354,10 +354,84 @@
           </div>
 
         </div>
+      </div>
+    </section>
 
-     <!--==========================
-      Contact Section
+
+    <!--==========================
+      Buku Tamu
     ============================-->
+    <div id="content-utama" class="container wow fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 order-md-1 mt-5 mb-5">
+                <h3>Buku Tamu</h3>
+                <p>Silahkan mengisi buku tamu Kami</p>
+                <form autocomplete="off">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">Nama Depan</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required autofocus>
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Nama Belakang</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Valid last name is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-9 mb-3">
+                            <label for="firstName">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="" value="" required>
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="lastName">Jenis Kelamin</label>
+                            <select id="jk" class="form-control">
+                                <option value="L">Laki Laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email">Komentar</label>
+                        <textarea type="textarea" class="form-control" id="komentar" placeholder="Isi Komentar ANda" required></textarea>
+                        <input type="button" id="simpanBukuTamu" class="btn btn-primary mt-2" value="simpan"/>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Daftar Buku Tamu</h4>
+                <table id="bukuTamu" class="table table-bordered">
+                    <thead class="bg-primary text-white">
+                    <tr>
+                        <th class="text-center">No.</th>
+                        <th class="text-center">Nama</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Jenis Kelamin</th>
+                        <th>Komentar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 
   </main>
@@ -415,7 +489,36 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script>
+    let i = 0;
+    $('input#simpanBukuTamu').click(function(){
+        let html    = '',
+            element = $("table#bukuTamu tbody"),
+            name    = $("#firstName").val() + ' ' + $("#lastName").val(),
+            email   = $("#email").val(),
+            jk      = $("select#jk").find(':selected').text(),
+            komentar= $("textarea#komentar").val();
+        i += 1;
+        html        += '' +
+            '<tr>' +
+            '<td>'+i+'</td>' +
+            '<td>'+name+'</td>' +
+            '<td>'+email+'</td>' +
+            '<td>'+jk+'</td>' +
+            '<td>'+komentar+'</td>' +
+            '</tr>'
+
+        element.append(html);
+        $("#firstName").val('');
+        $("#lastName").val('');
+        $("#email").val('');
+        $("select#jk").removeAttr("selected");
+        $("textarea#komentar").val('');
+    });
+</script>
+<script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/jquery/jquery-migrate.min.js"></script>
   <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="lib/easing/easing.min.js"></script>
